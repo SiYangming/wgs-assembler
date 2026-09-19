@@ -21,20 +21,15 @@
 
 ## 2. 获取方式
 
-本仓库 Release `wgs-8.3rc2` 提供以下附件（实际大小与校验值以 Release 页面为准）：
+本仓库 Release `wgs-8.3rc2` 提供以下附件：
 
-| 附件 | 说明 |
-| ---- | ---- |
-| `wgs-8.3rc2.tar.bz2` | 官方源码包（源码 revision 4627，含 Makefile 与脚本） |
-| `wgs-8.3rc2-Linux_amd64.tar.bz2` | 官方 Linux x86_64 预编译包（解压即用，无需编译） |
-| `PacBioToCA_sampleData.tar.gz` | PBcR 示例数据（λ 噬菌体） |
+| 附件 | 说明 | 大小（字节） | SHA256 |
+| ---- | ---- | ---- | ---- |
+| `wgs-8.3rc2.tar.bz2` | 官方源码包（源码 revision 4627，含 Makefile 与脚本） | 24603412 | `6ba1711ebe56629b670be87ae040ac948057474b3959666a88f0862c6a40f27b` |
+| `wgs-8.3rc2-Linux_amd64.tar.bz2` | 官方 Linux x86_64 预编译包（解压即用，无需编译） | 34608895 | `234150f9948d1d279605bc82e32ab65b1fe9c7b5b1e2fccbcf333ecbe5a16180` |
+| `PacBioToCA_sampleData.tar.gz` | PBcR 示例数据（λ 噬菌体） | 2596604 | — |
 
-源码包 `wgs-8.3rc2.tar.bz2` 的大小与校验值：
-
-```
-文件大小：24603412 字节
-SHA256  ：6ba1711ebe56629b670be87ae040ac948057474b3959666a88f0862c6a40f27b
-```
+> 两种安装包解压后都会得到名为 `wgs-8.3rc2/` 的目录，请分别解压到不同位置，避免相互覆盖。
 
 也可直接自上游 SourceForge 文件区获取：
 <https://sourceforge.net/projects/wgs-assembler/files/wgs-assembler/wgs-8.3/>
@@ -64,19 +59,18 @@ cd /path/to/install/wgs-8.3rc2/kmer && make install && cd ../src && make && cd .
 ## 4. 使用预编译包
 
 ```bash
-tar xjf wgs-8.3rc2-Linux_amd64.tar.bz2
+mkdir -p /path/to/install
+tar xjf wgs-8.3rc2-Linux_amd64.tar.bz2 -C /path/to/install/
 ```
 
-解压后即可直接使用，无需编译。
+解压后即可直接使用，无需编译；可执行文件位于 `/path/to/install/wgs-8.3rc2/Linux-amd64/bin/`。
 
 ## 5. 配置 PATH
 
-```bash
-# 源码编译：产物在 wgs-8.3rc2/Linux-amd64/bin/
-export PATH=/path/to/install/wgs-8.3rc2/Linux-amd64/bin:$PATH
+源码编译与预编译包的可执行文件目录相同：
 
-# 预编译包：解压目录下的 Linux-amd64/bin/
-export PATH=/path/to/install/wgs-8.3rc2-Linux_amd64/Linux-amd64/bin:$PATH
+```bash
+export PATH=/path/to/install/wgs-8.3rc2/Linux-amd64/bin:$PATH
 ```
 
 按上游 `README` 的说明，组装入口为：
